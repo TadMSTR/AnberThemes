@@ -36,14 +36,31 @@ ExitMenu() {
 UpdateMenu() {
 	source ./scripts/helper
 
-	dialog --backtitle "System" --infobox "\nDownloading latest release of AnberThemes ..." 5 55 > /dev/tty1
-	wget -q 'https://github.com/tadmstr/AnberThemes/releases/download/v1.0/AnberThemes.zip'
+	UPDATE_URL="https://github.com/tadmstr/AnberThemes/releases/download/v1.0/AnberThemes.zip"
+	PAYLOAD=/dev/shm/payload_temp/*
 
-	dialog --backtitle "System" --infobox "\nExtracting ..." 5 55 > /dev/tty1
-	unzip -qq -o AnberThemes.zip -d ../
+	sudo sh -c 'printf "\033c" > /dev/tty1'
+	printf "\nStarting update of AnberThemes..."
+	mkdir -p /dev/shm/payload_temp #create a temp folder in RAM
 
-	dialog --backtitle "System" --infobox "\nClearning up ..." 5 55 > /dev/tty1
-	rm -rf AnberThemes.zip
+	printf "\nDownloading archive for AnberThemes...\n"
+	sudo wget -q "$UPDATE_URL" -O /dev/shm/payload_temp/update.zip
+	if unzip -qt /dev/shm/payload_temp/update.zip | grep 'No errors detected';then
+		printf "\nUnzipping archive..."
+		sudo unzip -qo /dev/shm/payload_temp/update.zip -d /dev/shm/payload_temp/ #unzip directly in RAM
+		rm /dev/shm/payload_temp/update.zip
+		printf "\nOverwritting existing files..."
+		cp -rf $PAYLOAD ../
+		sudo chmod 777 ../*.sh #make sure newly downloaded scripts have right permission
+		printf "\nAnberThemes updated successfully."
+		sleep 3
+	else
+		printf "\nTheme update have failed because the archive did not download correctly."
+		printf "\nCheck your connection and try again.\n"
+		sleep 6
+	fi
+	printf "\nDeleting temporary files...\n"
+	sudo rm -rf /dev/shm/payload_temp #remove the temp folder from RAM
 
 	dialog --backtitle "System" --infobox "\nPlease launch AnberTheme again and enjoy ..." 5 55 > /dev/tty1
 	sleep 5
