@@ -13,12 +13,11 @@ REP_DIR=$REP_NAME-$REP_BRANCH
 ABS_PATH=$(readlink -f "$0")
 ABS_DIR=$(dirname "$ABS_PATH")
 THEME_CONTENT=/dev/shm/theme_update_temp/$REP_DIR/*
-THEME_NAME=es-theme-custom-box
 
 source ./scripts/helper
 
 cd /roms/themes
-mkdir $THEME_NAME
+mkdir $REP_NAME
 
 
 sudo sh -c 'printf "\033c" > /dev/tty1'
@@ -32,7 +31,7 @@ if unzip -qt /dev/shm/theme_update_temp/update.zip | grep 'No errors detected';t
     sudo unzip -qo /dev/shm/theme_update_temp/update.zip -d /dev/shm/theme_update_temp/ #unzip directly in RAM
     printf "\nOverwritting existing files..."
     rm *.sh #removing previous scripts, remove this line if you're not the repository maintainer.
-    cp -rf $THEME_CONTENT ./$THEME_NAME
+    cp -rf $THEME_CONTENT ./$REP_NAME
     printf "\nTheme $REP_NAME updated successfully."
     sleep 3
 else
