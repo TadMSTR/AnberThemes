@@ -1,5 +1,7 @@
 # AnberThemes
-Theme installer for ArkOS
+Theme installer for ArkOS  
+Tested on the RG351P  
+Still needs work but functions for the most part
 
 Adapted AnberPorts to make a theme installer and updater. Currently only themes by Jetup are included.  
 https://github.com/krishenriksen/AnberPorts  
