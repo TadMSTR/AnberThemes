@@ -37,7 +37,7 @@ UpdateMenu() {
 	source ./scripts/helper
 
 	dialog --backtitle "System" --infobox "\nDownloading latest release of AnberThemes ..." 5 55 > /dev/tty1
-#	wget -q 'https://github.com/tadmstr/AnberThemes/releases/download/1.0.0/AnberThemes.zip'
+	wget -q 'https://github.com/tadmstr/AnberThemes/releases/download/1.0.0/AnberThemes.zip'
 
 	dialog --backtitle "System" --infobox "\nExtracting ..." 5 55 > /dev/tty1
 	unzip -qq -o AnberThemes.zip -d ../
