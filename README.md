@@ -8,7 +8,7 @@ Thanks to **choo t** for the theme update script used to install/update the supp
 
 ## Installation
 
-**One time setup that wll be incorporated into a future update of ArkOS**  
+**One time setup that will be incorporated into a future update of ArkOS**  
 enable network service on the rg351 from the Options menu  
 ssh into the device using something like Putty  
 Run these two commands  
