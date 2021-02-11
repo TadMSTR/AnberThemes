@@ -1,12 +1,10 @@
 # AnberThemes
-Theme installer for ArkOS  
+Theme installer for [ArkOS](https://github.com/christianhaitian/arkos)  
 Tested on the RG351P  
 Still needs work but functions for the most part
 
-Adapted AnberPorts to make a theme installer and updater. Currently only themes by Jetup are included.  
-https://github.com/krishenriksen/AnberPorts  
-https://github.com/Jetup13  
+Adapted [AnberPorts](https://github.com/krishenriksen/AnberPorts) to make a theme installer and updater. Currently only themes by [Jetup](https://github.com/Jetup13) are included.  
 
-Instructions to use  
+## Installation
 Place AnberThemes.sh and AnberThemes folder in /roms/tools and add the following line to /etc/fstab then reboot  
 /roms/tools /opt/system/Tools        none    bind
