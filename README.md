@@ -6,5 +6,5 @@ https://github.com/krishenriksen/AnberPorts
 https://github.com/Jetup13  
 
 Instructions to use  
-Place AnberThemes.sh and AnberThemes folder in /roms/tools and add the following line to /etc/fstab  
+Place AnberThemes.sh and AnberThemes folder in /roms/tools and add the following line to /etc/fstab then reboot  
 /roms/tools /opt/system/Tools        none    bind
