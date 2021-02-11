@@ -10,18 +10,18 @@ GamesMenu() {
 
 	options=(
 		Back "Back to main menu"
-		es-theme-arkos-carbon "Install/Update"
-		es-theme-ChicueloAP "Install/Update"
-		es-theme-custom-box "Install/Update"
-		es-theme-epicnoir "Install/Update"
-		es-theme-freeplay "Install/Update"
-		es-theme-gbz35_mod "Install/Update"
-		es-theme-magical-pixel "Install/Update"
-		es-theme-minimal-arkos "Install/Update"
-		es-theme-nes-box "Install/Update"
-		es-theme-pixel "Install/Update"
-		es-theme-solo-horizontal-arkos-ed "Install/Update"
-		es-theme-switch "Install/Update"
+		es-theme-arkos-carbon "Install or Update"
+		es-theme-ChicueloAP "Install or Update"
+		es-theme-custom-box "Install or Update"
+		es-theme-epicnoir "Install or Update"
+		es-theme-freeplay "Install or Update"
+		es-theme-gbz35_mod "Install or Update"
+		es-theme-magical-pixel "Install or Update"
+		es-theme-minimal-arkos "Install or Update"
+		es-theme-nes-box "Install or Update"
+		es-theme-pixel "Install or Update"
+		es-theme-solo-horizontal-arkos-ed "Install or Update"
+		es-theme-switch "Install or Update"
 	)
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
