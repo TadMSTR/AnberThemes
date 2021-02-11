@@ -22,3 +22,5 @@ Reboot the device
 **This part will not be included in the above mentioned ArkOS update so will still be a one time manual step**  
 Place *AnberThemes.sh* and *AnberThemes* folder in `/roms/tools` 
 You can do this over your network, or by plugging the sdcard into your PC. In that case the location would be `EASYROMS/tools`.
+
+Now in ArkOS Options menu there will be a folder called **Tools** and AnberThemes can be run from there.
