@@ -30,7 +30,6 @@ if unzip -qt /dev/shm/theme_update_temp/update.zip | grep 'No errors detected';t
     printf "\nUnzipping archive..."
     sudo unzip -qo /dev/shm/theme_update_temp/update.zip -d /dev/shm/theme_update_temp/ #unzip directly in RAM
     printf "\nOverwritting existing files..."
-    rm *.sh #removing previous scripts, remove this line if you're not the repository maintainer.
     cp -rf $THEME_CONTENT ./$REP_NAME
     printf "\nTheme $REP_NAME updated successfully."
     sleep 3
