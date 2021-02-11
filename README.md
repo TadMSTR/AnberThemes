@@ -6,5 +6,5 @@ Still needs work but functions for the most part
 Adapted [AnberPorts](https://github.com/krishenriksen/AnberPorts) to make a theme installer and updater. Currently only themes by [Jetup](https://github.com/Jetup13) are included.  
 
 ## Installation
-Place AnberThemes.sh and AnberThemes folder in /roms/tools and add the following line to /etc/fstab then reboot  
-/roms/tools /opt/system/Tools        none    bind
+Place AnberThemes.sh and AnberThemes folder in `/roms/tools` and add the following line to `/etc/fstab` then reboot  
+```/roms/tools /opt/system/Tools        none    bind```
