@@ -2,7 +2,7 @@
 Theme installer for [ArkOS](https://github.com/christianhaitian/arkos)  
 Tested on the RG351P  
 
-Adapted [AnberPorts](https://github.com/krishenriksen/AnberPorts) by **kreal** to make a theme installer and updater. Currently only themes by [Jetup](https://github.com/Jetup13) are included.  
+Adapted [AnberPorts](https://github.com/krishenriksen/AnberPorts) by [kreal](https://github.com/krishenriksen) to make a theme installer and updater. Currently only themes by [Jetup](https://github.com/Jetup13) are included.  
 Thanks to **choo t** for the theme update script used to install/update the supported themes  
 Contributions from **JohnIrvine**
   
