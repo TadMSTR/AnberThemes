@@ -97,7 +97,7 @@ function ExitMenu() {
 
 function UpdateAnberThemes() {
 
-	UPDATE_URL="https://github.com/TadMSTR/AnberThemes/releases/download/v1.0/AnberThemes.zip"
+	UPDATE_URL="https://github.com/TadMSTR/AnberThemes/releases/download/update/AnberThemes.zip"
 	PAYLOAD=/dev/shm/payload_temp/*
 
 	cd /roms/tools
