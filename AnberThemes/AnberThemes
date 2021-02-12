@@ -3,86 +3,104 @@
 # Notes
 #
 export TERM=linux
-sudo chmod 666 /dev/tty1
+sudo chmod 666 /dev/tty1 > /dev/null 2>&1
 
-isInstalled() {
-  if [ -d "/roms/themes/$1" ]
-  then
-	retval="Update"
-  else
-	retval="Install"
-  fi
+source ./scripts/helper
+
+#
+# Joystick controls
+#
+sudo ./oga_controls & > /dev/null 2>&1
+
+
+function RemoveTheme () {
+	local theme="$1"
+
+	sudo sh -c 'printf "\033c" > /dev/tty1'
+	printf "\nRemoving $theme ..."
+    	sudo rm -rf "/roms/themes/$theme"
+	printf "\n$theme removed !"
+	
+	sleep 3
+
+	MainMenu
+
 }
 
-ThemesMenu() {
-    cmd=(dialog --clear --backtitle "AnberThemes" --title "[ Themes ]" --menu "Select theme from the list:" "15" "56" "15")
+function UninstallMenu() {
 
-    isInstalled es-theme-arkos-carbon
-    carbon=$retval
+	theme=(/roms/themes/*/)    # This creates an array of the full paths to all subdirs
+	theme=("${theme[@]%/}")      # This removes the trailing slash on each item
+	theme=("${theme[@]##*/}")    # This removes the path prefix, leaving just the dir names
+	
+	local options=()
 
-    isInstalled es-theme-ChicueloAP
-    ChicueloAP=$retval   
+	for theme in "${theme[@]}"; do
+                options+=($theme "Uninstall")
+        done
 
-    isInstalled es-theme-custom-box
-    custombox=$retval
 
-    isInstalled es-theme-epicnoir
-    epicnoir=$retval
-	
-    isInstalled es-theme-freeplay
-    freeplay=$retval
-	
-    isInstalled es-theme-gbz35_mod
-    gbz35mod=$retval
-	
-    isInstalled es-theme-magical-pixel
-    magicalpixel=$retval
-	
-    isInstalled es-theme-minimal-arkos
-    minimal=$retval
-	
-    isInstalled es-theme-nes-box
-    nesbox=$retval
-	
-    isInstalled es-theme-pixel
-    pixel=$retval
-	
-    isInstalled es-theme-solo-horizontal-arkos-ed
-    solohorizontal=$retval
+   	cmd=(dialog --clear --backtitle "AnberThemes" --title "[ Remove Themes ]" --menu "Select theme from the list:" "15" "56" "15")
+    	choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
 
-    isInstalled es-theme-switch
-    switch=$retval	
+	retval=$?
+	case $retval in
+		0)
+			RemoveTheme "${choices[0]}"
+			;;
+		1)
+			MainMenu ;;
 
-    options=(
-        Back "Back to main menu"
-        es-theme-arkos-carbon "$carbon"
-        es-theme-ChicueloAP "$ChicueloAP"
-        es-theme-custom-box "$custombox"
-        es-theme-epicnoir "$epicnoir"
-        es-theme-freeplay "$freeplay"
-        es-theme-gbz35_mod "$gbz35mod"
-        es-theme-magical-pixel "$magicalpixel"
-        es-theme-minimal-arkos "$minimal"
-        es-theme-nes-box "$nesbox"
-        es-theme-pixel "$pixel"
-        es-theme-solo-horizontal-arkos-ed "$solohorizontal"
-        es-theme-switch "$switch"
-    )
-
-    choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
-       bash ./scripts/themes/${choices[0]}
+	esac
 }
 
-ExitMenu() {
-	pgrep -f oga_controls | sudo xargs kill -9
+function InstallMenu() {
+	
+	local options=()
+
+	local themes=(
+	'es-theme-arkos-carbon'
+	'es-theme-ChicueloAP'
+	'es-theme-custom-box'
+	'es-theme-epicnoir'
+	'es-theme-freeplay'
+	'es-theme-gbz35_mod'
+	'es-theme-magical-pixel'
+	'es-theme-minimal-arkos'
+	'es-theme-nes-box'
+	'es-theme-pixel'
+	'es-theme-solo-horizontal-arkos-ed'
+	'es-theme-switch'
+	)
+
+	for theme in "${themes[@]}"; do
+            if [ -d "/roms/themes/$theme" ]
+		then
+                	options+=($theme "Update")
+           	 else
+                	options+=($theme "Install")
+            fi
+       done
+
+
+	cmd=(dialog --clear --backtitle "AnberThemes" --title "[ Install Themes ]" --menu "Select theme from the list:" "15" "56" "15")
+	choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
+		bash ./scripts/themes/${choices[0]}
+		
+	MainMenu
+}
+
+function ExitMenu() {
+	pgrep -f oga_controls | sudo xargs kill -9 > /dev/null 2>&1
 	sudo systemctl restart emulationstation
 }
 
-UpdateMenu() {
-	source ./scripts/helper
+function UpdateAnberThemes() {
 
-	UPDATE_URL="https://github.com/tadmstr/AnberThemes/releases/download/v1.0/AnberThemes.zip"
+	UPDATE_URL="https://github.com/TadMSTR/AnberThemes/releases/download/v1.0/AnberThemes.zip"
 	PAYLOAD=/dev/shm/payload_temp/*
+
+	cd /roms/tools
 
 	sudo sh -c 'printf "\033c" > /dev/tty1'
 	printf "\nStarting update of AnberThemes..."
@@ -95,8 +113,8 @@ UpdateMenu() {
 		sudo unzip -qo /dev/shm/payload_temp/update.zip -d /dev/shm/payload_temp/ #unzip directly in RAM
 		rm /dev/shm/payload_temp/update.zip
 		printf "\nOverwritting existing files..."
-		cp -rf $PAYLOAD ../
-		sudo chmod 777 ../*.sh #make sure newly downloaded scripts have right permission
+		cp -rf $PAYLOAD ./
+		sudo chmod 777 ./*.sh #make sure newly downloaded scripts have right permission
 		printf "\nAnberThemes updated successfully."
 		sleep 3
 	else
@@ -107,38 +125,40 @@ UpdateMenu() {
 	printf "\nDeleting temporary files...\n"
 	sudo rm -rf /dev/shm/payload_temp #remove the temp folder from RAM
 
-	dialog --backtitle "System" --infobox "\nPlease launch AnberTheme again and enjoy ..." 5 55 > /dev/tty1
+	dialog --backtitle "System" --infobox "\nPlease launch AnberThemes again and enjoy ..." 5 55 > /dev/tty1
 	sleep 5
 
 	ExitMenu
 }
 
-source ./scripts/helper
+function MainMenu () {
 
-#
-# Joystick controls
-#
-sudo ./oga_controls &
-
-#
-# Main menu
-#
-while true; do
 	cmd=(dialog --clear --backtitle "AnberThemes" --title " [ Main Menu ] " --menu "You can use UP/DOWN on the D-pad and A to select:" "10" "60" "10")
 
 	options=(
-		Themes "Install or update themes"
-		Update "Check for updates"
-		Exit "Exit to emulationstation"
+		A "Install or update a theme"
+		B "Uninstall a theme"
+		C "Update AnberThemes"
+		D "Exit to emulationstation"
 	)
 
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
 
-	for choice in $choices; do
-		case $choice in
-			Themes) ThemesMenu ;;
-			Update) UpdateMenu ;;
-			Exit) ExitMenu ;;
-		esac
-	done
-done
+	retval=$?
+	case $retval in
+		0)
+			for choice in $choices; do
+				case $choice in
+					A) InstallMenu ;;
+					B) UninstallMenu ;;
+					C) UpdateAnberThemes ;;
+					D) ExitMenu ;;
+				esac
+			done
+			;;
+		1)
+			ExitMenu ;;
+	esac
+}
+
+MainMenu
