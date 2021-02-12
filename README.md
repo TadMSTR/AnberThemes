@@ -4,7 +4,11 @@ Tested on the RG351P
 
 Adapted [AnberPorts](https://github.com/krishenriksen/AnberPorts) by **kreal** to make a theme installer and updater. Currently only themes by [Jetup](https://github.com/Jetup13) are included.  
 Thanks to **choo t** for the theme update script used to install/update the supported themes  
-
+  
+  
+## Updates  
+Added an uninstaller. Be mindful that you can remove stock themes with this. Currently no way to reinstall them via AnberThemes.
+  
 ## Installation
 
 **One time setup that will be incorporated into a future update of ArkOS**  
