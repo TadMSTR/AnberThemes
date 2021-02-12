@@ -23,35 +23,35 @@ ThemesMenu() {
     isInstalled es-theme-ChicueloAP
     ChicueloAP=$retval   
 
-	isInstalled es-theme-custom-box
-	custombox=$retval
+    isInstalled es-theme-custom-box
+    custombox=$retval
 
-	isInstalled es-theme-epicnoir
-	epicnoir=$retval
+    isInstalled es-theme-epicnoir
+    epicnoir=$retval
 	
-	isInstalled es-theme-freeplay
-	freeplay=$retval
+    isInstalled es-theme-freeplay
+    freeplay=$retval
 	
-	isInstalled es-theme-gbz35_mod
-	gbz35mod=$retval
+    isInstalled es-theme-gbz35_mod
+    gbz35mod=$retval
 	
-	isInstalled es-theme-magical-pixel
-	magicalpixel=$retval
+    isInstalled es-theme-magical-pixel
+    magicalpixel=$retval
 	
-	isInstalled es-theme-minimal-arkos
-	minimal=$retval
+    isInstalled es-theme-minimal-arkos
+    minimal=$retval
 	
-	isInstalled es-theme-nes-box
-	nesbox=$retval
+    isInstalled es-theme-nes-box
+    nesbox=$retval
 	
-	isInstalled es-theme-pixel
-	pixel=$retval
+    isInstalled es-theme-pixel
+    pixel=$retval
 	
-	isInstalled es-theme-solo-horizontal-arkos-ed
-	solohorizontal=$retval
+    isInstalled es-theme-solo-horizontal-arkos-ed
+    solohorizontal=$retval
 
-	isInstalled es-theme-switch
-	switch=$retval	
+    isInstalled es-theme-switch
+    switch=$retval	
 
     options=(
         Back "Back to main menu"
