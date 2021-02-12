@@ -63,7 +63,7 @@ ThemesMenu() {
         es-theme-gbz35_mod "$gbz35mod"
         es-theme-magical-pixel "$magicalpixel"
         es-theme-minimal-arkos "$minimal"
-        es-theme-nes-box "$nes-box"
+        es-theme-nes-box "$nesbox"
         es-theme-pixel "$pixel"
         es-theme-solo-horizontal-arkos-ed "$solohorizontal"
         es-theme-switch "$switch"
