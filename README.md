@@ -15,10 +15,10 @@ This is now included with latest ArkOS update so no need to manually do it.
 ``enable network service on the rg351 from the Options menu  
 ssh into the device using something like Putty  
 Run these two commands  
-`mkdir /roms/tools`  
-`sudo nano /etc/fstab`  
+mkdir /roms/tools  
+sudo nano /etc/fstab   
 Add the follwing line into the fstab file you just opened  
-```/roms/tools /opt/system/Tools        none    bind```  
+/roms/tools /opt/system/Tools        none    bind  
 Hit *CTRL+X*, then *Y*, then *Enter*  
 Reboot the device``  
 
