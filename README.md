@@ -12,8 +12,7 @@ Added an uninstaller. Be mindful that you can remove stock themes with this. Cur
   
 ## Installation  
 This is now included with latest ArkOS update so no need to manually do it.  
-``**One time setup that will be incorporated into a future update of ArkOS**  
-enable network service on the rg351 from the Options menu  
+``enable network service on the rg351 from the Options menu  
 ssh into the device using something like Putty  
 Run these two commands  
 `mkdir /roms/tools`  
