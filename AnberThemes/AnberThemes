@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Notes
 #
 export TERM=linux
@@ -12,6 +13,99 @@ source ./scripts/helper
 #
 sudo ./oga_controls & > /dev/null 2>&1
 
+function InstallTheme () {
+	
+    for choice in $choices; do
+        case $choice in
+            es-theme-arkos-carbon)
+            REP_URL="https://github.com/Jetup13/es-theme-arkos-carbon/archive/master.zip"
+            ;;
+
+            es-theme-ChicueloAP)
+            REP_URL="https://github.com/Jetup13/es-theme-ChicueloAP/archive/master.zip"
+            ;;
+			
+            es-theme-custom-box)
+            REP_URL="https://github.com/Jetup13/es-theme-custom-box/archive/main.zip"
+			;;
+			
+            es-theme-epicnoir)
+            REP_URL="https://github.com/Jetup13/es-theme-epicnoir/archive/master.zip"			
+            ;;
+			
+			es-theme-freeplay)
+            REP_URL="https://github.com/Jetup13/es-theme-freeplay/archive/master.zip"			
+            ;;
+			
+			es-theme-gbz35_mod)
+            REP_URL="https://github.com/Jetup13/es-theme-gbz35_mod/archive/master.zip"			
+            ;;
+			
+			es-theme-magical-pixel)
+            REP_URL="https://github.com/Jetup13/es-theme-magical-pixel/archive/master.zip"			
+            ;;
+			
+			es-theme-minimal-arkos)
+            REP_URL="https://github.com/Jetup13/es-theme-minimal-arkos/archive/master.zip"			
+            ;;
+			
+			es-theme-nes-box)
+            REP_URL="https://github.com/Jetup13/es-theme-nes-box/archive/master.zip"			
+            ;;
+			
+			es-theme-pixel)
+            REP_URL="https://github.com/Jetup13/es-theme-pixel/archive/master.zip"			
+            ;;
+			
+			es-theme-solo-horizontal-arkos-ed)
+            REP_URL="https://github.com/Jetup13/es-theme-solo-horizontal-arkos-ed/archive/main.zip"			
+            ;;
+			es-theme-switch)
+            REP_URL="https://github.com/Jetup13/es-theme-switch/archive/master.zip"			
+            ;;
+        esac
+    done
+
+	#extract the branch name from the provided URL
+	REP_BRANCH=$(grep -oP "[^\/]+(?=\.zip)" <<< "$REP_URL")
+	#extract the repository name from the provided URL
+	REP_NAME=$(grep -oP "[^\/]+(?=\/archive)" <<< "$REP_URL")
+	REP_DIR=$REP_NAME-$REP_BRANCH
+	ABS_PATH=$(readlink -f "$0")
+	ABS_DIR=$(dirname "$ABS_PATH")
+	THEME_CONTENT=/dev/shm/theme_update_temp/$REP_DIR/*
+
+	source ./scripts/helper
+
+	cd /roms/themes
+	mkdir $REP_NAME
+
+
+	sudo sh -c 'printf "\033c" > /dev/tty1'
+	printf "\nStarting update of $REP_NAME..."
+	mkdir -p /dev/shm/theme_update_temp #create a temp folder in RAM
+
+	printf "\nDownloading archive for the $REP_BRANCH branch...\n"
+	sudo wget -q "$REP_URL" -O /dev/shm/theme_update_temp/update.zip
+	if unzip -qt /dev/shm/theme_update_temp/update.zip | grep 'No errors detected';then
+		printf "\nUnzipping archive..."
+		sudo unzip -qo /dev/shm/theme_update_temp/update.zip -d /dev/shm/theme_update_temp/ #unzip directly in RAM
+		printf "\nOverwritting existing files..."
+		cp -rf $THEME_CONTENT ./$REP_NAME
+		printf "\nTheme $REP_NAME updated successfully."
+		sleep 3
+	else
+		printf "\nTheme update have failed because the archive did not download correctly."
+		printf "\nCheck your connection and try again.\n"
+		sleep 6
+	fi
+	printf "\nDeleting temporary files...\n"
+	sudo rm -rf /dev/shm/theme_update_temp #remove the temp folder from RAM
+
+		sleep 3
+
+		MainMenu
+}
 
 function RemoveTheme () {
 	local theme="$1"
@@ -85,9 +179,16 @@ function InstallMenu() {
 
 	cmd=(dialog --clear --backtitle "AnberThemes" --title "[ Install Themes ]" --menu "Select theme from the list:" "15" "56" "15")
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
-		bash ./scripts/themes/${choices[0]}
-		
-	MainMenu
+
+	retval=$?
+	case $retval in
+		0)
+			InstallTheme "${choices[0]}"
+			;;
+		1)
+			MainMenu ;;
+
+	esac
 }
 
 function ExitMenu() {
