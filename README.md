@@ -11,7 +11,7 @@ Contributions from **JohnIrvine**
 Added an uninstaller. Be mindful that you can remove stock themes with this. Currently no way to reinstall them via AnberThemes.
   
 ## Installation  
-**This is now included with latest ArkOS update so no need to manually do it.**  
+**This part is now included with latest ArkOS update so no need to manually do it.**  
 ~~enable network service on the rg351 from the Options menu  
 ssh into the device using something like Putty  
 Run these two commands  
