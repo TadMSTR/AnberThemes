@@ -6,7 +6,7 @@
 export TERM=linux
 sudo chmod 666 /dev/tty1 > /dev/null 2>&1
 
-source ./scripts/helper
+source ./helper
 
 #
 # Joystick controls
@@ -75,12 +75,6 @@ function InstallTheme () {
 	ABS_DIR=$(dirname "$ABS_PATH")
 	THEME_CONTENT=/dev/shm/theme_update_temp/$REP_DIR/*
 
-	source ./scripts/helper
-
-	cd /roms/themes
-	mkdir $REP_NAME
-
-
 	sudo sh -c 'printf "\033c" > /dev/tty1'
 	printf "\nStarting update of $REP_NAME..."
 	mkdir -p /dev/shm/theme_update_temp #create a temp folder in RAM
@@ -90,8 +84,9 @@ function InstallTheme () {
 	if unzip -qt /dev/shm/theme_update_temp/update.zip | grep 'No errors detected';then
 		printf "\nUnzipping archive..."
 		sudo unzip -qo /dev/shm/theme_update_temp/update.zip -d /dev/shm/theme_update_temp/ #unzip directly in RAM
+		mkdir -p /roms/themes/$REP_NAME
 		printf "\nOverwritting existing files..."
-		cp -rf $THEME_CONTENT ./$REP_NAME
+		cp -rf $THEME_CONTENT /roms/themes/$REP_NAME
 		printf "\nTheme $REP_NAME updated successfully."
 		sleep 3
 	else
