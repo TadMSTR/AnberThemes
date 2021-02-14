@@ -33,34 +33,34 @@ function InstallTheme () {
             REP_URL="https://github.com/Jetup13/es-theme-epicnoir/archive/master.zip"			
             ;;
 			
-			es-theme-freeplay)
+	    es-theme-freeplay)
             REP_URL="https://github.com/Jetup13/es-theme-freeplay/archive/master.zip"			
             ;;
 			
-			es-theme-gbz35_mod)
+	    es-theme-gbz35_mod)
             REP_URL="https://github.com/Jetup13/es-theme-gbz35_mod/archive/master.zip"			
             ;;
 			
-			es-theme-magical-pixel)
+	    es-theme-magical-pixel)
             REP_URL="https://github.com/Jetup13/es-theme-magical-pixel/archive/master.zip"			
             ;;
 			
-			es-theme-minimal-arkos)
+	    es-theme-minimal-arkos)
             REP_URL="https://github.com/Jetup13/es-theme-minimal-arkos/archive/master.zip"			
             ;;
 			
-			es-theme-nes-box)
+	    es-theme-nes-box)
             REP_URL="https://github.com/Jetup13/es-theme-nes-box/archive/master.zip"			
             ;;
 			
-			es-theme-pixel)
+	    es-theme-pixel)
             REP_URL="https://github.com/Jetup13/es-theme-pixel/archive/master.zip"			
             ;;
 			
-			es-theme-solo-horizontal-arkos-ed)
+	    es-theme-solo-horizontal-arkos-ed)
             REP_URL="https://github.com/Jetup13/es-theme-solo-horizontal-arkos-ed/archive/main.zip"			
             ;;
-			es-theme-switch)
+	    es-theme-switch)
             REP_URL="https://github.com/Jetup13/es-theme-switch/archive/master.zip"			
             ;;
         esac
