@@ -14,7 +14,7 @@ source ./helper
 sudo ./oga_controls & > /dev/null 2>&1
 
 function InstallTheme () {
-	
+
 	for choice in $choices; do
 		case $choice in
 		es-theme-arkos-carbon) REP_URL="https://github.com/Jetup13/es-theme-arkos-carbon/archive/master.zip" ;;
@@ -63,9 +63,9 @@ function InstallTheme () {
 	printf "\nDeleting temporary files...\n"
 	sudo rm -rf /dev/shm/theme_update_temp #remove the temp folder from RAM
 
-		sleep 3
+	sleep 3
 
-		MainMenu
+	MainMenu
 }
 
 function RemoveTheme () {
@@ -75,11 +75,10 @@ function RemoveTheme () {
 	printf "\nRemoving $theme ..."
     	sudo rm -rf "/roms/themes/$theme"
 	printf "\n$theme removed !"
-	
+
 	sleep 3
 
 	MainMenu
-
 }
 
 function UninstallMenu() {
@@ -87,7 +86,7 @@ function UninstallMenu() {
 	theme=(/roms/themes/*/)    # This creates an array of the full paths to all subdirs
 	theme=("${theme[@]%/}")      # This removes the trailing slash on each item
 	theme=("${theme[@]##*/}")    # This removes the path prefix, leaving just the dir names
-	
+
 	local options=()
 
 	for theme in "${theme[@]}"; do
@@ -105,7 +104,7 @@ function UninstallMenu() {
 }
 
 function InstallMenu() {
-	
+
 	local options=()
 
 	local themes=(
