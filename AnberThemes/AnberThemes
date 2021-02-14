@@ -94,7 +94,6 @@ function UninstallMenu() {
                 options+=($theme "Uninstall")
         done
 
-
    	cmd=(dialog --clear --backtitle "AnberThemes" --title "[ Remove Themes ]" --menu "Select theme from the list:" "15" "56" "15")
     	choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
 
@@ -105,7 +104,6 @@ function UninstallMenu() {
 			;;
 		1)
 			MainMenu ;;
-
 	esac
 }
 
@@ -137,7 +135,6 @@ function InstallMenu() {
             fi
        done
 
-
 	cmd=(dialog --clear --backtitle "AnberThemes" --title "[ Install Themes ]" --menu "Select theme from the list:" "15" "56" "15")
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 > /dev/tty1)
 
@@ -148,7 +145,6 @@ function InstallMenu() {
 			;;
 		1)
 			MainMenu ;;
-
 	esac
 }
 
@@ -161,9 +157,7 @@ function UpdateAnberThemes() {
 
 	UPDATE_URL="https://github.com/TadMSTR/AnberThemes/releases/download/update/AnberThemes.zip"
 	PAYLOAD=/dev/shm/payload_temp/*
-
 	cd /roms/tools
-
 	sudo sh -c 'printf "\033c" > /dev/tty1'
 	printf "\nStarting update of AnberThemes..."
 	mkdir -p /dev/shm/payload_temp #create a temp folder in RAM
