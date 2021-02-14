@@ -29,8 +29,8 @@ function InstallTheme () {
 	    	es-theme-pixel) REP_URL="https://github.com/Jetup13/es-theme-pixel/archive/master.zip" ;;
 	    	es-theme-solo-horizontal-arkos-ed) REP_URL="https://github.com/Jetup13/es-theme-solo-horizontal-arkos-ed/archive/main.zip" ;;
 	    	es-theme-switch) REP_URL="https://github.com/Jetup13/es-theme-switch/archive/master.zip" ;;
-        esac
-done
+        	esac
+	done
 
 	#extract the branch name from the provided URL
 	REP_BRANCH=$(grep -oP "[^\/]+(?=\.zip)" <<< "$REP_URL")
