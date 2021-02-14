@@ -177,7 +177,7 @@ function UpdateAnberThemes() {
 	sudo rm -rf /dev/shm/payload_temp #remove the temp folder from RAM
 
 	dialog --backtitle "System" --infobox "\nPlease launch AnberThemes again and enjoy ..." 5 55 > /dev/tty1
-	sleep 5
+	sleep 3
 
 	ExitMenu
 }
