@@ -42,7 +42,7 @@ function InstallTheme () {
             ;;
 			
 	    es-theme-magical-pixel)
-            REP_URL="https://github.com/Jetup13/es-theme-magical-pixel/archive/master.zip"			
+            REP_URL="https://github.com/Jetup13/es-theme-magical-pixel/archive/main.zip"			
             ;;
 			
 	    es-theme-minimal-arkos)
