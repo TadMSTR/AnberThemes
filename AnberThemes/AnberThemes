@@ -15,57 +15,22 @@ sudo ./oga_controls & > /dev/null 2>&1
 
 function InstallTheme () {
 	
-    for choice in $choices; do
-        case $choice in
-            es-theme-arkos-carbon)
-            REP_URL="https://github.com/Jetup13/es-theme-arkos-carbon/archive/master.zip"
-            ;;
-
-            es-theme-ChicueloAP)
-            REP_URL="https://github.com/Jetup13/es-theme-ChicueloAP/archive/master.zip"
-            ;;
-			
-            es-theme-custom-box)
-            REP_URL="https://github.com/Jetup13/es-theme-custom-box/archive/main.zip"
-	    ;;
-			
-            es-theme-epicnoir)
-            REP_URL="https://github.com/Jetup13/es-theme-epicnoir/archive/master.zip"			
-            ;;
-			
-	    es-theme-freeplay)
-            REP_URL="https://github.com/Jetup13/es-theme-freeplay/archive/master.zip"			
-            ;;
-			
-	    es-theme-gbz35_mod)
-            REP_URL="https://github.com/Jetup13/es-theme-gbz35_mod/archive/master.zip"			
-            ;;
-			
-	    es-theme-magical-pixel)
-            REP_URL="https://github.com/Jetup13/es-theme-magical-pixel/archive/main.zip"			
-            ;;
-			
-	    es-theme-minimal-arkos)
-            REP_URL="https://github.com/Jetup13/es-theme-minimal-arkos/archive/master.zip"			
-            ;;
-			
-	    es-theme-nes-box)
-            REP_URL="https://github.com/Jetup13/es-theme-nes-box/archive/master.zip"			
-            ;;
-			
-	    es-theme-pixel)
-            REP_URL="https://github.com/Jetup13/es-theme-pixel/archive/master.zip"			
-            ;;
-			
-	    es-theme-solo-horizontal-arkos-ed)
-            REP_URL="https://github.com/Jetup13/es-theme-solo-horizontal-arkos-ed/archive/main.zip"			
-            ;;
-	    
-	    es-theme-switch)
-            REP_URL="https://github.com/Jetup13/es-theme-switch/archive/master.zip"			
-            ;;
+	for choice in $choices; do
+		case $choice in
+		es-theme-arkos-carbon) REP_URL="https://github.com/Jetup13/es-theme-arkos-carbon/archive/master.zip" ;;
+            	es-theme-ChicueloAP) REP_URL="https://github.com/Jetup13/es-theme-ChicueloAP/archive/master.zip" ;;
+            	es-theme-custom-box) REP_URL="https://github.com/Jetup13/es-theme-custom-box/archive/main.zip" ;;
+            	es-theme-epicnoir) REP_URL="https://github.com/Jetup13/es-theme-epicnoir/archive/master.zip" ;;
+	    	es-theme-freeplay) REP_URL="https://github.com/Jetup13/es-theme-freeplay/archive/master.zip" ;;
+	    	es-theme-gbz35_mod) REP_URL="https://github.com/Jetup13/es-theme-gbz35_mod/archive/master.zip" ;;
+	    	es-theme-magical-pixel) REP_URL="https://github.com/Jetup13/es-theme-magical-pixel/archive/main.zip" ;;
+	    	es-theme-minimal-arkos) REP_URL="https://github.com/Jetup13/es-theme-minimal-arkos/archive/master.zip" ;;
+	    	es-theme-nes-box) REP_URL="https://github.com/Jetup13/es-theme-nes-box/archive/master.zip" ;;
+	    	es-theme-pixel) REP_URL="https://github.com/Jetup13/es-theme-pixel/archive/master.zip" ;;
+	    	es-theme-solo-horizontal-arkos-ed) REP_URL="https://github.com/Jetup13/es-theme-solo-horizontal-arkos-ed/archive/main.zip" ;;
+	    	es-theme-switch) REP_URL="https://github.com/Jetup13/es-theme-switch/archive/master.zip" ;;
         esac
-    done
+done
 
 	#extract the branch name from the provided URL
 	REP_BRANCH=$(grep -oP "[^\/]+(?=\.zip)" <<< "$REP_URL")
